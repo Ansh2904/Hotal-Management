@@ -69,23 +69,6 @@ main().then(()=> {
 });
 
 
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-    console.log(req.cookies);
-});
-
-app.get('/getCookie', (req, res) => {
-    res.cookie('username', 'JohnDoe', {signed: true});
-    res.cookie('sessionId', '123456789'); 
-    res.send('Cookie has been set');
-});
-
-app.get('/verify', (req, res) => {
-    console.log(req.signedCookies);
-});
-
-
 app.use((req, res, next) => {
     next(new ExpressError(404 , 'Page Not Found'));
 });
